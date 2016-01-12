@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <?php include(APPLICATION_PATH.'application/modules/admin/views/index/header.html');?>
+
+    <!-- start: CSS -->
+    <?php include(APPLICATION_PATH.'application/modules/admin/views/login/css.html');?>
+    <!-- end: CSS -->
+</head>
+
+<body>
+<!-- start: Header -->
+<div class="navbar">
+    <?php include(APPLICATION_PATH.'application/modules/admin/views/index/top.html');?>
+</div>
+<!-- start: Header -->
+
+<div class="container-fluid-full">
+    <div class="row-fluid">
+        <!-- start: Main Menu -->
+        <?php include(APPLICATION_PATH.'application/modules/admin/views/index/left.html');?>
+        <!-- end: Main Menu -->
+        <!-- start: Content -->
+        <div id="content" class="span10">
+            <?php include(APPLICATION_PATH.'application/modules/admin/views/index/bread_crumb.html');?>
+            <div class="row-fluid" style="height: 800px;">
+                <div class="box-content">
+                    <div class="button-login">
+                        <a href="/Admin/Article/add" class="btn btn-primary">写文章</a>
+                    </div>
+                    <br/><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>title</th>
+                            <th>time</th>
+                            <th>update time</th>
+                            <th>status</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($list as $item){ ?>
+                            <tr>
+                                <td><?php echo $item['title'];?></td>
+                                <td class="center"><?php echo $item['date'];?></td>
+                                <td class="center"><?php echo $item['update_date'];?></td>
+                                <td class="center">
+                                    <?php if($item['status'] == 1) {?>
+                                        <span class="label label-success">正常</span>
+                                    <?php }else if($item['status'] == 2) {?>
+                                        <span class="label label-important">已删除</span>
+                                    <?php }?>
+                                </td>
+                                <td class="center">
+                                    <a class="btn btn-success" href="#">
+                                        <i class="halflings-icon white zoom-in"></i>
+                                    </a>
+                                    <a class="btn btn-info" href="#">
+                                        <i class="halflings-icon white edit"></i>
+                                    </a>
+                                    <a class="btn btn-danger" href="#">
+                                        <i class="halflings-icon white trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php }?>
+                        </tbody>
+                    </table>
+                    <?php echo $pagers;?>
+                </div>
+            </div>
+            </div>
+        </div><!--/.fluid-container-->
+        <!-- end: Content -->
+    </div><!--/#content.span10-->
+</div><!--/fluid-row-->
+
+<?php include(APPLICATION_PATH.'application/modules/admin/views/index/footer.html');?>
+
+<!-- start: JavaScript-->
+<?php include(APPLICATION_PATH.'application/modules/admin/views/login/js.html');?>
+<!-- end: JavaScript-->
+
+</body>
+</html>

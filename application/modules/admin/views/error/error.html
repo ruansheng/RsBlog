@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <?php include(APPLICATION_PATH.'application/modules/admin/views/index/header.html');?>
+
+    <!-- start: CSS -->
+    <?php include(APPLICATION_PATH.'application/modules/admin/views/login/css.html');?>
+    <!-- end: CSS -->
+</head>
+
+<body>
+<!-- start: Header -->
+<div class="navbar">
+    <?php include(APPLICATION_PATH.'application/modules/admin/views/index/top.html');?>
+</div>
+<!-- start: Header -->
+
+<div class="container-fluid-full">
+    <div class="row-fluid">
+        <!-- start: Main Menu -->
+        <?php include(APPLICATION_PATH.'application/modules/admin/views/index/left.html');?>
+        <!-- end: Main Menu -->
+        <!-- start: Content -->
+        <div id="content" class="span10">
+            <?php include(APPLICATION_PATH.'application/modules/admin/views/index/bread_crumb.html');?>
+            <div class="row-fluid" style="height: 800px;">
+                <div class="box-content">
+                    error !
+                </div>
+            </div>
+            </div>
+        </div><!--/.fluid-container-->
+        <!-- end: Content -->
+    </div><!--/#content.span10-->
+</div><!--/fluid-row-->
+
+<?php include(APPLICATION_PATH.'application/modules/admin/views/index/footer.html');?>
+
+<!-- start: JavaScript-->
+<?php include(APPLICATION_PATH.'application/modules/admin/views/login/js.html');?>
+<!-- end: JavaScript-->
+
+</body>
+</html>

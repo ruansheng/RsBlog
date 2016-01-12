@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <?php include(APPLICATION_PATH.'application/modules/admin/views/index/header.html');?>
+
+    <!-- start: CSS -->
+    <?php include(APPLICATION_PATH.'application/modules/admin/views/login/css.html');?>
+    <!-- end: CSS -->
+</head>
+
+<body>
+<!-- start: Header -->
+<div class="navbar">
+    <?php include(APPLICATION_PATH.'application/modules/admin/views/index/top.html');?>
+</div>
+<!-- start: Header -->
+
+<div class="container-fluid-full">
+    <div class="row-fluid">
+        <!-- start: Main Menu -->
+        <?php include(APPLICATION_PATH.'application/modules/admin/views/index/left.html');?>
+        <!-- end: Main Menu -->
+        <!-- start: Content -->
+        <div id="content" class="span10">
+            <?php include(APPLICATION_PATH.'application/modules/admin/views/index/bread_crumb.html');?>
+            <div class="row-fluid" style="height: 800px;">
+                <div class="form-horizontal">
+                    <label class="control-label" for="typeahead">title </label>
+                    <div class="controls">
+                        <input class="input-xlarge focused" type="text" id="title" name="title" value="">
+                    </div>
+                    <br/>
+                    <label class="control-label" for="typeahead">content </label>
+                    <div class="controls">
+                        <textarea class="input-xlarge focused" rows="10" cols="100" id="acontent" name="content" value=""></textarea>
+                    </div>
+                    <br/>
+                    <div class="form-actions" style="background: none; border: 0px">
+                        <button type="submit" class="btn btn-primary">Publish</button>
+                    </div>
+                </div>
+            </div>
+        </div><!--/.fluid-container-->
+        <!-- end: Content -->
+    </div><!--/#content.span10-->
+</div><!--/fluid-row-->
+
+<?php include(APPLICATION_PATH.'application/modules/admin/views/index/footer.html');?>
+
+<!-- start: JavaScript-->
+<?php include(APPLICATION_PATH.'application/modules/admin/views/login/js.html');?>
+<!-- end: JavaScript-->
+<script>
+    $(function() {
+        $('button[type=submit]').click(function() {
+            var title = $('input[name=title]').val();
+            var content = $('textarea[name=content]').val();
+
+            if(title == '' || title == undefined) {
+                alert('title is empty');
+                return ;
+            }
+            if(content == '' || content == undefined) {
+                alert('content is empty');
+                return ;
+            }
+
+            var url = '/Admin/Article/publish';
+            $.post(url,{"title":title,"content":content},function(ret){
+                if(ret.en == 200) {
+                    alert(ret.em);
+                    window.location.href = '/Admin/Article/list';
+                } else {
+                    alert(ret.em);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
